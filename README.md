@@ -1,10 +1,12 @@
 # perfsa
 perfsa is the product of several tools designed to facilitate doing math with contour plots. 
-* `contourgrab.m`
-* `contourplot.m`
+* `contourgrab.m` [![View contourgrab on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/74771-contourgrab)
+* `contourfit.m` [![View contourfit on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/74772-contourfit)
 * `perfsa.js`
 * *Independent, independent, and dependent JS variables for a particular routine*
 * *a task-specific JavaScript routine (for use in browsers)*
+
+Requires MATLAB, Curve Fitting Toolbox, Image Processing Toolbox.
 
 First, use `contourgrab` to fit an axis to an image... 
 

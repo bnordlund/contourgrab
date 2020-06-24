@@ -20,3 +20,35 @@ Then, use `contourfit` to generate a fit for the independent, independent, and d
 
 Independent grid vectors and a corresponding dependent grid matrix (i.e. meshgrid) are exported as JS variables for interpolation.
 Results are produced from browser inputs and bilinear interpolation of grid data (in the browser). 
+
+```matlab
+function iid2JSON(name, i1, i2, d)
+% IID2JSON Appends arrays converted to JSON to a .js file.
+%      IID2JSON(name, i1, i2, d) appends i1, i2, and d to output.js
+filename='output.js';
+fid=fopen(filename,'at');
+fprintf(fid,['var ',name,'_i1 = ',double2JSON(i1),';\n']);
+fprintf(fid,['var ',name,'_i2 = ',double2JSON(i2),';\n']);
+fprintf(fid,['var ',name,'_d = ',double2JSON(d),';\n']);
+fclose(fid);
+% winopen(filename)
+end
+```
+
+```matlab
+subfigure = 'foo';
+% Grab contour data (double-click to proceed)
+[X, Y, Z, H] = contourgrab();
+% Save variables to MAT-file
+save([subfigure, '.mat'], 'X', 'Y', 'Z', 'H');
+load(subfigure)
+% Generate meshgrid
+% Specify order of ind, ind, and dep variables
+iid = 'xzy';
+% Verify order of contourfit arguments matches 'iid'
+[FO, ~ , ~, i1, i2, d] = contourfit(X, Z, Y, iid, H);
+name = [subfigure, upper(iid)];
+iid2JSON(name, i1, i2, d);
+% Check result
+FO(131, 9000)
+```
